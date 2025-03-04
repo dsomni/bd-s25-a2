@@ -4,15 +4,26 @@ by Dmitry Beresnev / <d.beresnev@innopolis.university>
 
 ## Projects description
 
-TBW
+The company is struggling with three big data issues:
+
+- Volume: large amounts of data per day.
+- Variety: Social network data, user behavior events, and campaign messages.
+- Value: Analyzing customer social networks for targeted marketing.
+
+The primary objective of this assignment is to design a big data solution to store petabytes (the provided dataset is only a snapshot) of raw data using effective, optimal and scalable data models that can handle growth and complexity without compromising quality, efficiency, or usability. The optimal design will enable analytics and transactions for real-time and batch data processing. Your task is to find the best data model for storing the big data and obtaining valuable insights from it by following the tasks below.
 
 ## Requirements
+
+The **main assumption** is that initial `f27` dataset already lies in `data/initial` as separate csv files.
 
 Code was tested on Windows 11, Python 3.12
 
 ## Before start
 
-TBW
+I recommend using [uv](https://docs.astral.sh/uv/) packet manager for python.
+You can start with `uv sync`.
+
+Optionally, you can run `bash setup_precommit.sh` to setup pre-commit hook for GitHub for code formatting using [ruff](https://docs.astral.sh/ruff/).
 
 ## Repository structure
 
@@ -21,7 +32,11 @@ TBW
 ├───── initial          # Initial `f27` dataset data
 ├──────── *.csv
 |
+├── notebooks           # Auxiliary jupiter notebooks for getting insights
+|
 ├── output              # Folder to store the results of the experiments
+|
+├── references          # Reference papers etc.
 |
 ├── report
 ├───── report.pdf       # Final report
