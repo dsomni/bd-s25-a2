@@ -63,7 +63,11 @@ I suggest to run scripts using `uv` from root folder, otherwise inner paths coul
 
 ## Useful commands
 
+`psql \! chcp 1251`
+
 `psql -d ecommerce -U postgres -f scripts/load_data_psql.sql`
+
+`mongosh --file scripts/load_data_mongodb.js`
 
 ## Contacts
 
