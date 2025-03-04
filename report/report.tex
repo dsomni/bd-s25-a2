@@ -1,60 +1,49 @@
-\documentclass{article}
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts{}
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+%Template version as of 6/27/2024
 
-
-
-\usepackage{arxiv}
-
-\usepackage[utf8]{inputenc} % allow utf-8 input
-\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
-\usepackage{hyperref}       % hyperlinks
-\usepackage{url}            % simple URL typesetting
-\usepackage{booktabs}       % professional-quality tables
-\usepackage{amsfonts}       % blackboard math symbols
-\usepackage{nicefrac}       % compact symbols for 1/2, etc.
-\usepackage{microtype}      % microtypography
-\usepackage{lipsum}		% Can be removed after putting your text content
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
 \usepackage{graphicx}
-\usepackage{natbib}
-\usepackage{doi}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{lipsum}
 
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\begin{document}
 
+\title{Big Data IU-S25 Assignment 2}
 
-\title{Big Data IU-S25 Assignment 1}
-
-%\date{September 9, 1985}	% Here you can change the date presented in the paper title
-%\date{} 					% Or removing it
-
-\author{Dmitry Beresnev\\
-	Innopolis University\\
-	\texttt{d.beresnev@innopolis.university} \\
+\author{\IEEEauthorblockN{Dmitry Beresnev}
+    \IEEEauthorblockA{\textit{Innopolis University} \\
+        Innopolis, Russia \\
+        d.beresnev@innopolis.university}
 }
 
-% Uncomment to remove the date
-%\date{}
-
-% Uncomment to override  the `A preprint' in the header
-\renewcommand{\headeright}{Assignment Report}
-\renewcommand{\undertitle}{Assignment Report}
-\renewcommand{\shorttitle}{\textit{arXiv} Template}
-
-
-\begin{document}
 \maketitle
 
 \begin{abstract}
-	\lipsum[1]
+    \lipsum[1]
 \end{abstract}
-
 
 
 \section{Introduction}
 \lipsum[2]
 
-\section*{Acknowledgments}
+\section*{Acknowledgment}
+
 The style of this report is inspired by the~\cite{uzunbayir}.
 
 
-\bibliographystyle{unsrtnat}
-\bibliography{references}
+
+\begin{thebibliography}{00}
+    \bibitem{uzunbayir} Serhat Uzunbayir. Relational database and nosql inspections using mongodb and neo4j on a big data application.
+    In 2022 7th International Conference on Computer Science and Engineering (UBMK), pages 148--153, 2022.
+    doi:10.1109/UBMK55850.2022.9919589.
+\end{thebibliography}
+
 
 \end{document}

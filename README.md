@@ -1,4 +1,4 @@
-# Big Data IU-S25 Assignment 1
+# Big Data IU-S25 Assignment 2
 
 by Dmitry Beresnev / <d.beresnev@innopolis.university>
 
@@ -32,6 +32,8 @@ Optionally, you can run `bash setup_precommit.sh` to setup pre-commit hook for G
 ├───── initial          # Initial `f27` dataset data
 ├──────── *.csv
 |
+├── data_models         # Hackolade data models
+|
 ├── notebooks           # Auxiliary jupiter notebooks for getting insights
 |
 ├── output              # Folder to store the results of the experiments
@@ -52,6 +54,16 @@ Optionally, you can run `bash setup_precommit.sh` to setup pre-commit hook for G
 |
 └──
 ```
+
+## Scripts Run
+
+I suggest to run scripts using `uv` from root folder, otherwise inner paths could break:
+
+`uv run ./scripts/<script_name>.py`
+
+## Useful commands
+
+`psql -d ecommerce -U postgres -f scripts/load_data_psql.sql`
 
 ## Contacts
 
