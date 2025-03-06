@@ -31,8 +31,10 @@ Optionally, you can run `bash setup_precommit.sh` to setup pre-commit hook for G
 ├── data                # Data used in project
 ├───── initial          # Initial `f27` dataset data
 ├──────── *.csv
-|
-├── data_models         # Hackolade data models
+├───── cleaned          # Cleaned version of dataset
+├──────── *.csv
+├───── models           # Hackolade data models
+├──────── *.hck.json|
 |
 ├── notebooks           # Auxiliary jupiter notebooks for getting insights
 |

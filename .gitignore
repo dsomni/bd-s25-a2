@@ -1,5 +1,7 @@
 data/initial
 data/cleaned
+data/test
+data/mongo
 
 
 ## Core latex/pdflatex auxiliary files:

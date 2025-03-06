@@ -49,9 +49,9 @@ def clean_campaigns():
         "is_test",
     ]
 
-    campaigns_df[campaigns_boolean_columns] = (
-        campaigns_df[campaigns_boolean_columns].astype(bool).notna()
-    )  # Treat NaN as False
+    campaigns_df[campaigns_boolean_columns] = campaigns_df[
+        campaigns_boolean_columns
+    ].astype(bool)
 
     save_df("campaigns", campaigns_df)
 
