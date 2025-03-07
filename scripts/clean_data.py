@@ -73,7 +73,15 @@ def clean_friends():
     friends_df = load_df("friends")
 
     # Ensure each pair (friend1, friend2) is unique
+    friends_df = pd.DataFrame(
+        {
+            "friend1": friends_df[["friend1", "friend2"]].min(axis=1),
+            "friend2": friends_df[["friend1", "friend2"]].max(axis=1),
+        }
+    )
+
     friends_df.drop_duplicates(inplace=True)
+    friends_df.reset_index(drop=True, inplace=True)
 
     save_df("friends", friends_df)
 

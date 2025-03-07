@@ -10,9 +10,9 @@
           "name": "campaign_id",
           "hackoladeMeta": {},
           "isActivated": true,
-          "type": "numeric",
-          "GUID": "bc702e8e-17fd-4d86-8319-0706cb0fdb28",
-          "error": {}
+          "type": "string",
+          "error": {},
+          "GUID": "bc702e8e-17fd-4d86-8319-0706cb0fdb28"
         },
         {
           "name": "campaign_type",
@@ -261,7 +261,7 @@
           "name": "campaign_id",
           "hackoladeMeta": {},
           "isActivated": true,
-          "type": "numeric",
+          "type": "string",
           "error": {
             "name": false
           },
@@ -271,7 +271,7 @@
           "name": "client_id",
           "hackoladeMeta": {},
           "isActivated": true,
-          "type": "numeric",
+          "type": "string",
           "error": {
             "name": false
           },
@@ -599,7 +599,7 @@
           "name": "user_id",
           "hackoladeMeta": {},
           "isActivated": true,
-          "type": "numeric",
+          "type": "string",
           "error": {
             "name": false
           },
@@ -614,7 +614,7 @@
             {
               "hackoladeMeta": {},
               "isActivated": true,
-              "type": "numeric",
+              "type": "string",
               "error": {},
               "GUID": "15705d29-4e51-4d25-bb8e-a408ce18f74b",
               "arrayItem": true
@@ -668,14 +668,12 @@
                   "name": "product_id",
                   "hackoladeMeta": {},
                   "isActivated": true,
-                  "type": "numeric",
-                  "GUID": "fcc72b2b-26a1-460c-92c3-dccbd53e79df",
+                  "type": "string",
                   "error": {
                     "name": false,
                     "code": false
                   },
-                  "foreignCollection": "",
-                  "foreignField": []
+                  "GUID": "fcc72b2b-26a1-460c-92c3-dccbd53e79df"
                 },
                 {
                   "name": "price",
@@ -768,14 +766,12 @@
           "name": "product_id",
           "hackoladeMeta": {},
           "isActivated": true,
-          "type": "numeric",
-          "GUID": "1fe5f123-0c15-439a-b7d9-a9de276d43a4",
+          "type": "string",
           "error": {
             "name": false,
             "code": false
           },
-          "foreignCollection": "",
-          "foreignField": []
+          "GUID": "1fe5f123-0c15-439a-b7d9-a9de276d43a4"
         },
         {
           "name": "category",
@@ -787,14 +783,12 @@
               "name": "category_id",
               "hackoladeMeta": {},
               "isActivated": true,
-              "type": "numeric",
-              "GUID": "20aa7cc1-c2f5-4514-adda-a604abcac853",
+              "type": "string",
               "error": {
                 "name": false,
                 "code": false
               },
-              "foreignCollection": "",
-              "foreignField": []
+              "GUID": "20aa7cc1-c2f5-4514-adda-a604abcac853"
             },
             {
               "name": "category_code",
@@ -896,13 +890,11 @@
           "name": "client_id",
           "hackoladeMeta": {},
           "isActivated": true,
-          "type": "numeric",
+          "type": "string",
           "error": {
             "name": false
           },
-          "GUID": "40c9bf4c-87ed-4c2c-a6ae-eeec4b37a8b1",
-          "foreignCollection": "",
-          "foreignField": []
+          "GUID": "40c9bf4c-87ed-4c2c-a6ae-eeec4b37a8b1"
         },
         {
           "name": "first_purchase_date",
@@ -921,13 +913,11 @@
           "name": "user_id",
           "hackoladeMeta": {},
           "isActivated": true,
-          "type": "numeric",
-          "GUID": "11c6ceae-8869-4a25-9de0-237e66493068",
+          "type": "string",
           "error": {
             "name": false
           },
-          "foreignCollection": "",
-          "foreignField": []
+          "GUID": "11c6ceae-8869-4a25-9de0-237e66493068"
         },
         {
           "name": "user_device_id",
@@ -1130,7 +1120,7 @@
   "creationTS": "2025-03-03T10:31:16.113Z",
   "GUID": "9f34e416-ca3d-474a-ba7d-dd03f9d15da5",
   "isLineageEnabled": false,
-  "lastModifTS": "2025-03-06T20:47:03.440Z",
+  "lastModifTS": "2025-03-07T14:46:48.397Z",
   "persistenceSchemaVersion": "8",
   "isCreatedByPlugin": true,
   "pluginInformation": {
@@ -1161,7 +1151,7 @@
             "GUID": "10b8122e-3695-438c-aac5-637a4194a9ca",
             "x": 1394.0487817196433,
             "y": 1266.8040712468191,
-            "width": 277,
+            "width": 276,
             "height": 573,
             "color": {}
           },
@@ -1185,7 +1175,7 @@
             "GUID": "22619055-fdea-488e-97b4-ee39e20fd0dc",
             "x": 1401.599975585938,
             "y": 1125.8666178385415,
-            "width": 238,
+            "width": 270,
             "height": 123,
             "color": {}
           }

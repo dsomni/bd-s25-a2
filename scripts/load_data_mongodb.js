@@ -2,7 +2,6 @@ var db_name = "bd-a2";
 db = connect(`mongodb://localhost/${db_name}`);
 
 db.dropDatabase(); // TODO Remove this!
-
 db.createCollection("campaigns", {
   capped: false,
   validator: {
@@ -14,7 +13,7 @@ db.createCollection("campaigns", {
           bsonType: "objectId",
         },
         campaign_id: {
-          bsonType: "number",
+          bsonType: "string",
         },
         campaign_type: {
           bsonType: "string",
@@ -109,10 +108,10 @@ db.createCollection("messages", {
           bsonType: "string",
         },
         campaign_id: {
-          bsonType: "number",
+          bsonType: "string",
         },
         client_id: {
-          bsonType: "number",
+          bsonType: "string",
         },
         message_type: {
           bsonType: "string",
@@ -227,13 +226,13 @@ db.createCollection("users", {
           bsonType: "objectId",
         },
         user_id: {
-          bsonType: "number",
+          bsonType: "string",
         },
         friends: {
           bsonType: "array",
           additionalItems: true,
           items: {
-            bsonType: "number",
+            bsonType: "string",
           },
         },
         events: {
@@ -249,7 +248,7 @@ db.createCollection("users", {
                 bsonType: "string",
               },
               product_id: {
-                bsonType: "number",
+                bsonType: "string",
               },
               price: {
                 bsonType: "number",
@@ -290,13 +289,13 @@ db.createCollection("products", {
           bsonType: "objectId",
         },
         product_id: {
-          bsonType: "number",
+          bsonType: "string",
         },
         category: {
           bsonType: "object",
           properties: {
             category_id: {
-              bsonType: "number",
+              bsonType: "string",
             },
             category_code: {
               bsonType: "string",
@@ -339,13 +338,13 @@ db.createCollection("clients", {
           bsonType: "objectId",
         },
         client_id: {
-          bsonType: "number",
+          bsonType: "string",
         },
         first_purchase_date: {
           bsonType: "date",
         },
         user_id: {
-          bsonType: "number",
+          bsonType: "string",
         },
         user_device_id: {
           bsonType: "number",
@@ -370,8 +369,12 @@ db.clients.createIndex(
     unique: true,
   }
 );
+
 var exec = require("child_process").execSync;
 
+exec(
+  `mongoimport -d ${db_name} -c messages_temp --file ./data/mongo/messages.json`
+);
 exec(
   `mongoimport -d ${db_name} -c campaigns_temp --file ./data/mongo/campaigns.json`
 );
@@ -384,13 +387,12 @@ exec(
 exec(
   `mongoimport -d ${db_name} -c friends_temp --file ./data/mongo/friends.json`
 );
-exec(
-  `mongoimport -d ${db_name} -c messages_temp --file ./data/mongo/messages.json`
-);
+
+db = connect(`mongodb://localhost/${db_name}`);
 
 db.campaigns_temp.createIndex(
   {
-    id: 1,
+    campaign_id: 1,
     campaign_type: 1,
   },
   {
@@ -451,6 +453,17 @@ db.friends_temp.createIndex(
   },
   {
     name: "friend2",
+  }
+);
+
+db.friends_temp.createIndex(
+  {
+    friend1: 1,
+    friend2: 1,
+  },
+  {
+    name: "both_friends",
+    unique: true,
   }
 );
 
@@ -636,8 +649,8 @@ db.clients.aggregate([
       ],
     },
   },
-  { $set: { friends1: "$friends1.friend1" } },
-  { $set: { friends2: "$friends2.friend2" } },
+  { $set: { friends1: "$friends1.friend2" } },
+  { $set: { friends2: "$friends2.friend1" } },
   {
     $set: {
       friends: {
@@ -670,7 +683,7 @@ console.log("Start building 'campaigns'...");
 db.campaigns_temp.aggregate([
   {
     $project: {
-      campaign_id: "$id",
+      campaign_id: 1,
       campaign_type: 1,
       channel: 1,
       topic: 1,
