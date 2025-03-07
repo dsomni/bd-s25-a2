@@ -2,6 +2,7 @@ data/initial
 data/cleaned
 data/test
 data/mongo
+data/postgres
 
 
 ## Core latex/pdflatex auxiliary files:
