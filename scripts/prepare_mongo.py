@@ -6,7 +6,7 @@ import pandas as pd
 warnings.filterwarnings("ignore")
 
 CLEANED_DATA_PATH = "./data/cleaned"
-MONGO_DATA_PATH = "../data/mongo"
+MONGO_DATA_PATH = "./data/mongo"
 
 
 def load_df(name: str) -> pd.DataFrame:

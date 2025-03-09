@@ -3,6 +3,7 @@ data/cleaned
 data/test
 data/mongo
 data/postgres
+data/neo4j
 
 
 ## Core latex/pdflatex auxiliary files:

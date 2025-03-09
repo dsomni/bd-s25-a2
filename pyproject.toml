@@ -13,6 +13,6 @@ dependencies = [
 
 [tool.ruff]
 extend-include = ["*.ipynb"]
-extend-select = ["I"]
+lint.extend-select = ["I"]
 fix=true
 line-length = 90

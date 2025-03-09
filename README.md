@@ -71,6 +71,11 @@ I suggest to run scripts using `uv` from root folder, otherwise inner paths coul
 
 `mongosh --file scripts/load_data_mongodb.js`
 
+`Neo4j puts files into import directory`
+`dbms.memory.transaction.total.max=1024m`
+
+`cat scripts/load_data_neo4j.cypher | cypher-shell -u neo4j -p 11111111`
+
 ## Contacts
 
 In case of any questions you can contact me via university email at the beginning
