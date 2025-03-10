@@ -76,3 +76,8 @@ Optionally, you can add authentication
 
 To run queries:
 `uv run scripts/run_queries.py`
+
+## Benchmarking
+
+Script `scripts/benchmark.ps1` is used for benchmarking:
+`.\scripts\benchmark.ps1 "<command>"`
