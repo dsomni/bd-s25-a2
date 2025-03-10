@@ -1,13 +1,20 @@
 import os
 import warnings
+from pathlib import Path
 
 import numpy as np
 import pandas as pd
 
 warnings.filterwarnings("ignore")
 
-INITIAL_DATA_PATH = "./data/initial"
-CLEANED_DATA_PATH = "./data/cleaned"
+
+def from_current_file(path: str) -> Path:
+    dirname = os.path.dirname(__file__)
+    return Path(os.path.join(dirname, path))
+
+
+INITIAL_DATA_PATH = from_current_file("../data/initial")
+CLEANED_DATA_PATH = from_current_file("../data/cleaned")
 
 
 def load_df(name: str) -> pd.DataFrame:

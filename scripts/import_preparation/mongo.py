@@ -1,12 +1,19 @@
 import os
 import warnings
+from pathlib import Path
 
 import pandas as pd
 
 warnings.filterwarnings("ignore")
 
-CLEANED_DATA_PATH = "./data/cleaned"
-MONGO_DATA_PATH = "./data/mongo"
+
+def from_current_file(path: str) -> Path:
+    dirname = os.path.dirname(__file__)
+    return Path(os.path.join(dirname, path))
+
+
+CLEANED_DATA_PATH = from_current_file("../../data/cleaned")
+MONGO_DATA_PATH = from_current_file("../../data/mongo")
 
 
 def load_df(name: str) -> pd.DataFrame:

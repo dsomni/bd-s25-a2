@@ -48,9 +48,11 @@ Optionally, you can run `bash setup_precommit.sh` to setup pre-commit hook for G
 ├── screenshots         # Folder to store the screenshots
 |
 ├── scripts             # Folder to store all types of scripts and queries
+├───── *.py             # Python scripts
 ├───── *.sql            # SQL queries
 ├───── *.js             # MongoDB queries
 ├───── *.cypher         # Neo4J queries
+├───── README.md        # Script-related instructions
 |
 ├── README.md           # The top-level README
 |
@@ -62,19 +64,6 @@ Optionally, you can run `bash setup_precommit.sh` to setup pre-commit hook for G
 I suggest to run scripts using `uv` from root folder, otherwise inner paths could break:
 
 `uv run ./scripts/<script_name>.py`
-
-## Useful commands
-
-`psql \! chcp 1251`
-
-`psql -d ecommerce -U postgres -f scripts/load_data_psql.sql`
-
-`mongosh --file scripts/load_data_mongodb.js`
-
-`Neo4j puts files into import directory`
-`dbms.memory.transaction.total.max=1024m`
-
-`cat scripts/load_data_neo4j.cypher | cypher-shell -u neo4j -p 11111111`
 
 ## Contacts
 
