@@ -79,5 +79,34 @@ To run queries:
 
 ## Benchmarking
 
-Script `scripts/benchmark.ps1` is used for benchmarking:
-`.\scripts\benchmark.ps1 "<command>"`
+I used [hyperfine](https://github.com/sharkdp/hyperfine) for benchmarking.
+
+Specifications:
+
+- OS: Window 11 10.0.26100
+- RAM: 16 Gb
+- CPU: Intel(R) Core(TM) i7-8750H @ 2.25GHz
+- PSQL version: 16.0
+- Neo4j version: 2025.02.0
+- MongoDB version: 6.0.5
+- Mongosh version: 1.8.0
+
+### PostgreSQL Benchmarking
+
+Use the following commands in git bash:
+`hyperfine --warmup 3  --runs 5 "psql -d ecommerce -U postgres -f .\scripts\queries\q1.sql" --style basic`
+
+`hyperfine --warmup 3  --runs 5 "psql -d ecommerce -U postgres -f .\scripts\queries\q2.sql" --style basic`
+
+### MongoDB Benchmarking
+
+`hyperfine --warmup 3  --runs 5 "mongosh --file .\scripts\queries\q1.js" --style basic`
+
+`hyperfine --warmup 3  --runs 5 "mongosh --file .\scripts\queries\q2.js" --style basic`
+
+### Neo4j Benchmarking
+
+Use the following commands in git bash:
+`hyperfine --warmup 3  --runs 5 "cat ./scripts/queries/q1.cypher | cypher-shell -u neo4j -p 11111111" --style basic`
+
+`hyperfine --warmup 3 --runs 5 "cat ./scripts/queries/q2.cypher | cypher-shell -u neo4j -p 11111111" --style basic`

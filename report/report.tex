@@ -181,7 +181,18 @@ Queries are stored in the \textit{scripts/queries} folder. All the queries retur
 
 \subsection{Benchmarking}
 
+The queries were benchmarked using~\href{https://github.com/sharkdp/hyperfine}{hyperfine} with three warm-up runs and total number of runs equals five. System specifications were the following:
+\begin{itemize}
+    \item \textbf{OS}: Window 11 10.0.26100
+    \item \textbf{RAM}: 16 Gb
+    \item \textbf{CPU}: Intel(R) Core(TM) i7-8750H @ 2.25GHz
+    \item \textbf{PSQL version}: 16.0
+    \item \textbf{Neo4j version}: 2025.02.0
+    \item \textbf{MongoDB version}: 6.0.5
+    \item \textbf{Mongosh version}: 1.8.0
+\end{itemize}
 
+The results of benchmarking are shown in \Cref{fig:queies_run}.
 
 \begin{figure}[hbthbt]
     \centering
@@ -189,7 +200,7 @@ Queries are stored in the \textit{scripts/queries} folder. All the queries retur
     \begin{tikzpicture}
         \begin{axis}[
                 ybar,
-                enlargelimits=0.5,
+                enlarge x limits=0.5,
                 legend style={
                         at={(0.5,-0.2)},
                         anchor=north,
@@ -202,9 +213,9 @@ Queries are stored in the \textit{scripts/queries} folder. All the queries retur
                 every node near coord/.append style={font=\tiny},
                 nodes near coords align={vertical},
                 legend style={/tikz/every even column/.append style={column sep=0.5cm}}]
-            \addplot coordinates {(Q1, 2.233) (Q2, 2.227)};
-            \addplot coordinates {(Q1, 34) (Q2, 38)};
-            \addplot coordinates {(Q1, 33) (Q2, 40)};
+            \addplot coordinates {(Q1, 0.850) (Q2, 1.043)};
+            \addplot coordinates {(Q1, 19.379) (Q2, 18.895)};
+            \addplot coordinates {(Q1, 8.662) (Q2, 3.743)};
 
             \legend{PostgreSQL,MongoDB,Neo4j}
         \end{axis}
@@ -212,9 +223,12 @@ Queries are stored in the \textit{scripts/queries} folder. All the queries retur
     \caption{Query execution results on the average of five runs}\label{fig:queies_run}
 \end{figure}
 
+Superiority of PostgreSQL is obvious. I suppose that slow work of MongoDB is due to large amount of data, as Document models usually works worse n such cases in comparison with Relational Models. Also, the problem can be with proposed models.
+
+Anyway, the PostgreSQL is the obvious leader, so I suggest PostgreSQL Relational model as a universal choice for the current setting.
 
 \section{Discussion}
-As a result of assignment the goal was partially achieved. Three data models, Relational, Document and Graph, were designed, implemented and discussed. Also, the hybrid model was successfully designed, although, in my opinion, it is not quite applicable in the current settings, what was discussed in corresponding section. Only two out of three business queries were designed, implemented and tested. The main conclusions of query testing is that for the proposed setting, the Relational data model with PostgreSQL is more suitable, effective and universal. Finally, unfortunately, I had no time to benchmark designed queries appropriately.
+As a result of assignment the goal was partially achieved. Three data models, Relational, Document and Graph, were designed, implemented and discussed. Also, the hybrid model was successfully designed, although, in my opinion, it is not quite applicable in the current settings, what was discussed in corresponding section. Only two out of three business queries were designed, implemented and tested. The main conclusions of query testing is that for the proposed setting, the Relational data model with PostgreSQL is more suitable, effective and universal. Finally, benchmarking was applied, and the leader, Relational PostgreSQL Data model, was determined.
 
 
 \section*{Acknowledgment}
