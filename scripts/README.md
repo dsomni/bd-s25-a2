@@ -52,3 +52,22 @@ Then you can load prepared data to Neo4j database `neo4j` by running
 
 Optionally, you can add authentication
 `cat scripts/load_data_neo4j.cypher | cypher-shell -u neo4j -p 11111111`
+
+### Optimal Model
+
+To prepare data for import run
+`uv run .\scripts\import_preparation\optimal.py`
+
+The prepared files now stored in `data/optimal`. Now you should put prepared files with postfix `_neo4j` to [neo4j import directory](https://neo4j.com/docs/operations-manual/current/configuration/file-locations/#neo4j-import). I also recommend to set the following in the database config file `dbms.memory.transaction.total.max=1024m`.
+
+Load prepared data to PostgreSQL database `ecommerce`:
+`psql -d ecommerce -U postgres -f scripts/optimal/load_data_psql.sql`
+
+Load prepared data to MongoDB database `bd-a2-opt`:
+`mongosh --file .\scripts\optimal\load_data_mongodb.js`
+
+Load prepared data to Neo4j database `neo4j`:
+`cat scripts/optimal/load_data_neo4j.cypher | cypher-shell`
+
+Optionally, you can add authentication
+`cat scripts/optimal/load_data_neo4j.cypher | cypher-shell -u neo4j -p 11111111`

@@ -106,10 +106,56 @@ Other data types and design elements shown in \Cref{fig:neo4j_model,fig:neo4j_er
     \caption{Graph Model for E-commerce}\label{fig:neo4j_ermodel}
 \end{figure}
 
+
+\subsection{Hybrid Data Model}
+The forth approach is to build a hybrid model, which incorporates the advantages of Relational, Document ang Graph models. Proposed hybrid model shown in \Cref{fig:postgres_optimal,fig:mongo_optimal,fig:neo4j_optimal,fig:neo4j_eroptimal} can potentially be better than all models described above. The main characteristics of this approach are the following:
+\begin{itemize}
+    \item Relational part handles the structured and transactional information, together with transactional relationships, introduced by primary and foreign keys
+    \item Document part contains flexible and event-driven data. Fields of this part can be omitted, and new fields can be added on demand. Also, nested documents are introduced for convenient grouping by meaning within items
+    \item Graph part effectively handles relationships, the number of which can be enormous. Specifically, it implements friendship, events and user-client relationships.
+    \item Note that `event id' is introduced to effectively separate different information about events among Document and Graph parts. For example, Graph part can be used to determine certain event between user and product, and Document part stores information about this event, which can vary depending on event type (though in our case it is the same)
+\end{itemize}
+Other design features have been already described in corresponding sub-sections, and are mostly natural.
+
+Advantages of hybrid model:
+\begin{itemize}
+    \item \textbf{Optimization for different purposes}. Relational part can handle transactional data, Document part --- event-driven (and testing) data, and Graph --- relations-related, such as recommendations
+    \item \textbf{Scalability and Performance Trade-Off}. Relational part preserves necessary structure, while Document and Graph parts can easily scale horizontally
+\end{itemize}
+
+Disadvantages of hybrid model:
+\begin{itemize}
+    \item \textbf{Complexity}. Maintaining consistency across three databases is complex task
+    \item \textbf{Operational overhead}. Expertise in three databases and different types of infrastructures can result in operational inefficiency
+    \item \textbf{Slow cross-db communication}. Queries related to multiple databases will usually be slower than in case of one database
+\end{itemize}
+A
+s a result I would recommend using the hybrid model either for small project, where maintaining the consistency is relatively easy, or in quite professional and skill team, which can handle such complex structure.
+
+\begin{figure}[htbp]
+    \centerline{\includegraphics[width=0.45\textwidth]{../screenshots/PostgresModelOptimal.png}}
+    \caption{Hybrid Model for E-commerce. Relational part}\label{fig:postgres_optimal}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centerline{\includegraphics[width=0.45\textwidth]{../screenshots/MongoDBModelOptimal.png}}
+    \caption{Hybrid Model for E-commerce. Document part}\label{fig:mongo_optimal}
+\end{figure}
+
+
+\begin{figure}[htbp]
+    \centerline{\includegraphics[width=0.3\textwidth]{../screenshots/Neo4jModelOptimal.png}}
+    \caption{Hybrid Model for E-commerce. Nodes and relations of Graph part}\label{fig:neo4j_optimal}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centerline{\includegraphics[width=0.5\textwidth]{../screenshots/Neo4jModelEROptimal.png}}
+    \caption{Hybrid Model for E-commerce. Graph part}\label{fig:neo4j_eroptimal}
+\end{figure}
+
 \section*{Acknowledgment}
 
 The style of this report is inspired by the~\cite{uzunbayir}.
-
 
 
 \begin{thebibliography}{00}

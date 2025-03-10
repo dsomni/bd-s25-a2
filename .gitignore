@@ -4,6 +4,7 @@ data/test
 data/mongo
 data/postgres
 data/neo4j
+data/optimal
 
 
 ## Core latex/pdflatex auxiliary files:
