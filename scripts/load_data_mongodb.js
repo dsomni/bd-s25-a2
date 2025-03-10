@@ -215,6 +215,16 @@ db.messages.createIndex(
   }
 );
 
+db.messages.createIndex(
+  {
+    message_type: 1,
+    campaign_id: 1,
+  },
+  {
+    name: "message_type_campaign_id",
+  }
+);
+
 db.createCollection("users", {
   capped: false,
   validator: {

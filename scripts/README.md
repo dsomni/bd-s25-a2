@@ -71,3 +71,8 @@ Load prepared data to Neo4j database `neo4j`:
 
 Optionally, you can add authentication
 `cat scripts/optimal/load_data_neo4j.cypher | cypher-shell -u neo4j -p 11111111`
+
+## Queries Running
+
+To run queries:
+`uv run scripts/run_queries.py`

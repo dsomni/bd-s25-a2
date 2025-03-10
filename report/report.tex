@@ -28,10 +28,10 @@
 \maketitle
 
 \begin{abstract}
-    It is a report  for the Assignment 2 of Big Data course taught at
-    Innopolis University, Russia in Spring semester 2025.
-\end{abstract}
 
+    The task of this assignment was to design a data models for e-commerce company to efficiently manage and analyze large amount of data. During the assignment, Relational, Document and Graph data models were implemented. Also, the hybrid model was designed, which has potential to outperform single-database solutions. For hybrid model, advantages and disadvantages were discussed. Business queries for three proposed single-database designed were designed, implemented and tested. Finally, the designed query were benchmarking and results analyzed.
+
+\end{abstract}
 
 \section{Introduction}
 A global e-commerce company, faces challenges managing exponential data growth from customer transactions, product catalogs, social networks, and inventory systems. The company wants to find an efficient way to store and analyze the data. They want to see which data model they can use to have fast data retrieval and query processing.
@@ -152,6 +152,40 @@ s a result I would recommend using the hybrid model either for small project, wh
     \centerline{\includegraphics[width=0.5\textwidth]{../screenshots/Neo4jModelEROptimal.png}}
     \caption{Hybrid Model for E-commerce. Graph part}\label{fig:neo4j_eroptimal}
 \end{figure}
+
+\section{Experimental Results}
+
+\subsection{Query Building}
+
+\paragraph{Q1} The purpose of the first query was to find out whether campaigns attracted the customers to purchase products. The business aims to engage more customers in next campaigns by leveraging the social network info. I decided to implement query for obtaining the following fraction: $f = \cfrac{P_p/T_p}{P_n/T_n}$, where $P_p$ --- number of messages with `is purchased' set to true with corresponding campaign having personalization, $T_p$ --- total number of messages with corresponding campaign having personalization, $P_n$ --- number of messages with `is purchased' set to true with corresponding campaign having no personalization and $T_n$ --- total number of messages  with corresponding campaign having no personalization. If the fraction $f \geq 1$, it would mean that personalization in campaigns indeed attracted the customers to purchase products, so it is reasonable to leverage the social network info.
+
+\paragraph{Q2} The purpose of the second query was to find top personalized recommended products we can display in the home page of the user. I decided to fix `user id' to 563016948 for queries. To find personalized products, query firstly find the project with which the user interacted mostly. Interaction is an event of type `view' or `cart'. Then, for such products the overall popularity is computed as a number of events occurred with these product among all users. Finally, the results are sorted firstly by number of interactions, the by popularity and the highest 10 is selected.
+
+\subsection{Query Results}
+
+Queries are stored in the \textit{scripts/queries} folder. All the queries return the same result as demonstrated in \textit{scripts/run\_queries.py}.
+
+\paragraph{Q1} For the fist query, $f \approx 2.175$, what means personalization in campaigns indeed attracts the customers to purchase products.
+
+\paragraph{Q2} The top products has the following identifications: [1005135,
+28717064,
+7004807,
+1003317,
+7005751,
+1005105,
+1004258,
+1004839,
+1005112,
+7004492]. Most of the popular products has category code `electronics.smartphone'.
+
+\subsection{Benchmarking}
+
+$\cdots$
+
+
+\section{Discussion}
+As a result of assignment the goal was partially achieved. Three data models, Relational, Document and Graph, were designed, implemented and discussed. Also, the hybrid model was successfully designed, although, in my opinion, it is not quite applicable in the current settings, what was discussed in corresponding section. Only two out of three business queries were designed, implemented and tested. The main conclusions of query testing is that for the proposed setting, the Relational data model with PostgreSQL is more suitable, effective and universal. Finally, unfortunately, I had no time to benchmark designed queries appropriately.
+
 
 \section*{Acknowledgment}
 
